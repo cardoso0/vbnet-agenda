@@ -137,10 +137,43 @@ Public Class FormPrincipal
         End Using
     End Sub
 
-    Private Sub FormAgenda_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub FormPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        GrupoFiltro.Visible = False
+        DtpDataInicio.Value = DateTime.Today
+        DtpDataFim.Value = DateTime.Today
         CarregarCompromissos()
     End Sub
+    Private Sub BtnMostrarFiltro_Click(sender As Object, e As EventArgs) Handles BtnMostrarFiltro.Click
+        GrupoFiltro.Visible = Not GrupoFiltro.Visible
+    End Sub
+    Private Sub BtnFiltrar_Click(sender As Object, e As EventArgs) Handles BtnFiltrar.Click
+        Dim dataInicio As Date = DtpDataInicio.Value.Date
+        Dim dataFim As Date = DtpDataFim.Value.Date.AddDays(1).AddSeconds(-1)
 
+        Using conn As SqlConnection = DbConnection.GetConnection()
+            Dim query As String = "SELECT id, Titulo, Descricao, DataHora FROm Compromissos WHERE UsuarioId = @UsuarioId AND DataHora BETWEEN @DataInicio AND @DataFim ORDER BY DataHora"
+            Using cmd As New SqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@UsuarioId", _userId)
+                cmd.Parameters.AddWithValue("@DataInicio", dataInicio)
+                cmd.Parameters.AddWithValue("@DataFim", dataFim)
+
+                Dim adapter As New SqlDataAdapter(cmd)
+                Dim dt As New DataTable()
+
+                Try
+                    adapter.Fill(dt)
+                    DgvCompromissos.DataSource = dt
+                Catch ex As Exception
+                    MessageBox.Show("Erro ao filtrar compromissos: " & ex.Message)
+                End Try
+            End Using
+        End Using
+    End Sub
+    Private Sub BtnLimparFiltro_Click(sender As Object, e As EventArgs) Handles BtnLimparFiltro.Click
+        DtpDataInicio.Value = Date.Today
+        DtpDataFim.Value = Date.Today
+        CarregarCompromissos()
+    End Sub
     Private Sub BtnLogout_Click(sender As Object, e As EventArgs) Handles BtnLogout.Click
         ' Fecha a tela principal
         Me.Close()

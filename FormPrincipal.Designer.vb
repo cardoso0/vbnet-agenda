@@ -33,7 +33,16 @@ Partial Class FormPrincipal
         Me.BtnExcluir = New System.Windows.Forms.Button()
         Me.DgvCompromissos = New System.Windows.Forms.DataGridView()
         Me.BtnLogout = New System.Windows.Forms.Button()
+        Me.BtnMostrarFiltro = New System.Windows.Forms.Button()
+        Me.GrupoFiltro = New System.Windows.Forms.GroupBox()
+        Me.DtpDataFim = New System.Windows.Forms.DateTimePicker()
+        Me.DtpDataInicio = New System.Windows.Forms.DateTimePicker()
+        Me.BtnFiltrar = New System.Windows.Forms.Button()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.BtnLimparFiltro = New System.Windows.Forms.Button()
         CType(Me.DgvCompromissos, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GrupoFiltro.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -131,11 +140,88 @@ Partial Class FormPrincipal
         Me.BtnLogout.Text = "Sair"
         Me.BtnLogout.UseVisualStyleBackColor = True
         '
+        'BtnMostrarFiltro
+        '
+        Me.BtnMostrarFiltro.Location = New System.Drawing.Point(557, 202)
+        Me.BtnMostrarFiltro.Name = "BtnMostrarFiltro"
+        Me.BtnMostrarFiltro.Size = New System.Drawing.Size(75, 23)
+        Me.BtnMostrarFiltro.TabIndex = 11
+        Me.BtnMostrarFiltro.Text = "Filtro"
+        Me.BtnMostrarFiltro.UseVisualStyleBackColor = True
+        '
+        'GrupoFiltro
+        '
+        Me.GrupoFiltro.Controls.Add(Me.BtnLimparFiltro)
+        Me.GrupoFiltro.Controls.Add(Me.DtpDataFim)
+        Me.GrupoFiltro.Controls.Add(Me.DtpDataInicio)
+        Me.GrupoFiltro.Controls.Add(Me.BtnFiltrar)
+        Me.GrupoFiltro.Controls.Add(Me.Label5)
+        Me.GrupoFiltro.Controls.Add(Me.Label4)
+        Me.GrupoFiltro.Location = New System.Drawing.Point(398, 49)
+        Me.GrupoFiltro.Name = "GrupoFiltro"
+        Me.GrupoFiltro.Size = New System.Drawing.Size(234, 147)
+        Me.GrupoFiltro.TabIndex = 12
+        Me.GrupoFiltro.TabStop = False
+        Me.GrupoFiltro.Visible = False
+        '
+        'DtpDataFim
+        '
+        Me.DtpDataFim.Location = New System.Drawing.Point(10, 78)
+        Me.DtpDataFim.Name = "DtpDataFim"
+        Me.DtpDataFim.Size = New System.Drawing.Size(213, 20)
+        Me.DtpDataFim.TabIndex = 4
+        '
+        'DtpDataInicio
+        '
+        Me.DtpDataInicio.Location = New System.Drawing.Point(10, 32)
+        Me.DtpDataInicio.Name = "DtpDataInicio"
+        Me.DtpDataInicio.Size = New System.Drawing.Size(213, 20)
+        Me.DtpDataInicio.TabIndex = 3
+        '
+        'BtnFiltrar
+        '
+        Me.BtnFiltrar.Location = New System.Drawing.Point(40, 114)
+        Me.BtnFiltrar.Name = "BtnFiltrar"
+        Me.BtnFiltrar.Size = New System.Drawing.Size(75, 23)
+        Me.BtnFiltrar.TabIndex = 2
+        Me.BtnFiltrar.Text = "Filtrar"
+        Me.BtnFiltrar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.BtnFiltrar.UseVisualStyleBackColor = True
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(7, 62)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(55, 13)
+        Me.Label5.TabIndex = 1
+        Me.Label5.Text = "Data Final"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(7, 16)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(60, 13)
+        Me.Label4.TabIndex = 0
+        Me.Label4.Text = "Data Inicial"
+        '
+        'BtnLimparFiltro
+        '
+        Me.BtnLimparFiltro.Location = New System.Drawing.Point(121, 114)
+        Me.BtnLimparFiltro.Name = "BtnLimparFiltro"
+        Me.BtnLimparFiltro.Size = New System.Drawing.Size(75, 23)
+        Me.BtnLimparFiltro.TabIndex = 5
+        Me.BtnLimparFiltro.Text = "Limpar Filtro"
+        Me.BtnLimparFiltro.UseVisualStyleBackColor = True
+        '
         'FormPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.GrupoFiltro)
+        Me.Controls.Add(Me.BtnMostrarFiltro)
         Me.Controls.Add(Me.BtnLogout)
         Me.Controls.Add(Me.DgvCompromissos)
         Me.Controls.Add(Me.BtnExcluir)
@@ -150,6 +236,8 @@ Partial Class FormPrincipal
         Me.Name = "FormPrincipal"
         Me.Text = "FormPrincipal"
         CType(Me.DgvCompromissos, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GrupoFiltro.ResumeLayout(False)
+        Me.GrupoFiltro.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -166,4 +254,12 @@ Partial Class FormPrincipal
     Friend WithEvents BtnExcluir As Button
     Friend WithEvents DgvCompromissos As DataGridView
     Friend WithEvents BtnLogout As Button
+    Friend WithEvents BtnMostrarFiltro As Button
+    Friend WithEvents GrupoFiltro As GroupBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents DtpDataFim As DateTimePicker
+    Friend WithEvents DtpDataInicio As DateTimePicker
+    Friend WithEvents BtnFiltrar As Button
+    Friend WithEvents Label5 As Label
+    Friend WithEvents BtnLimparFiltro As Button
 End Class
